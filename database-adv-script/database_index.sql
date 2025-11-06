@@ -11,13 +11,12 @@ CREATE INDEX idx_booking_status ON Booking(status);
 CREATE INDEX idx_property_host_id ON Property(host_id);
 CREATE INDEX idx_property_location ON Property(location);
 
-#Measuring query performance
--- Before index
-EXPLAIN SELECT * 
-FROM Booking
-WHERE status = 'confirmed';
+-- Measuring query performance before and after adding indexes
 
--- After index
-EXPLAIN SELECT *
+-- Before adding indexes
+-- EXPLAIN ANALYZE SELECT * FROM Booking WHERE status = 'confirmed';
+
+-- After adding indexes
+EXPLAIN ANALYZE SELECT *
 FROM Booking
 WHERE status = 'confirmed';
